@@ -606,7 +606,8 @@
 /* Product Grids with Smooth Transition */
 .product-grids {
     position: relative;
-    min-height: 400px;
+    min-height: 480px;
+    overflow: visible;
 }
 
 .product-grid {
@@ -619,15 +620,22 @@
     gap: 2rem;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+    transform: translateY(8px) scale(0.99);
+    filter: blur(4px);
+    transition:
+        opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        filter 0.5s ease,
+        visibility 0.5s;
+    will-change: transform, opacity, filter;
 }
 
 .product-grid.active {
     position: relative;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
 }
 
 /* Product Card */

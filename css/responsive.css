@@ -31,11 +31,26 @@
 
     /* Navbar Mobile */
     .navbar-3d {
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 70px;
     }
 
-    .navbar-3d .nav-logo img {
-        height: 32px;
+    .nav-logo-center {
+        position: relative;
+        left: 0;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .nav-logo-center img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
     }
 
     .navbar-3d .nav-links {
@@ -44,6 +59,19 @@
 
     .navbar-3d .nav-menu-btn {
         display: flex;
+        margin-right: 0;
+        z-index: 100;
+    }
+
+    .navbar-3d .nav-actions {
+        display: flex;
+        justify-content: flex-end;
+        z-index: 100;
+    }
+
+    .lang-toggle {
+        padding: 6px 10px !important;
+        font-size: 0.75rem !important;
     }
 
     /* Hero Section Mobile Fix */
@@ -171,35 +199,49 @@
 
     /* Shop Mobile */
     .shop-section-3d {
-        padding: 2rem 1rem;
+        padding: 4rem 1.5rem;
     }
 
-    .shop-categories {
-        flex-direction: column;
-        gap: 0.5rem;
+    .shop-toggle-container {
+        margin: 1.5rem 0 2.5rem;
     }
 
-    .category-tab {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.75rem;
-        justify-content: center;
+    .shop-toggle {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .toggle-option {
+        min-width: unset;
+        flex: 1;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    .toggle-text {
+        font-size: 0.6rem;
+    }
+
+    .product-grids {
+        min-height: 500px;
     }
 
     .product-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .product-card {
         max-width: 100%;
+        margin: 0 auto;
     }
 
     .product-info h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .product-info p {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
     /* Contact Mobile */
