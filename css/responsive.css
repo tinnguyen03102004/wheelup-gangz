@@ -197,9 +197,9 @@
         font-size: 0.8rem;
     }
 
-    /* Shop Mobile */
+    /* Shop Mobile Sliding Pill */
     .shop-section-3d {
-        padding: 4rem 1.5rem;
+        padding: 4rem 1rem;
     }
 
     .shop-toggle-container {
@@ -208,31 +208,21 @@
 
     .shop-toggle {
         width: 100%;
-        max-width: 500px;
-    }
-
-    .toggle-option {
-        min-width: unset;
-        flex: 1;
-        padding: 0.75rem 0.5rem;
-        font-size: 0.65rem;
-    }
-
-    .toggle-text {
-        font-size: 0.6rem;
+        max-width: 400px;
     }
 
     .product-grids {
-        min-height: 500px;
+        padding: 1rem 0;
     }
 
     .product-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 1rem;
     }
 
     .product-card {
-        max-width: 100%;
+        max-width: 300px;
         margin: 0 auto;
     }
 

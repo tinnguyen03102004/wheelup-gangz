@@ -42,65 +42,59 @@ class LoadingControllerV3 {
     }
 
     async runStages() {
+        const totalDuration = this.stages.reduce((sum, s) => sum + s.duration, 0);
+        let startTime = performance.now();
+
+        // Start stages updates
+        this.updateStageTexts();
+
+        const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / totalDuration, 1);
+
+            // Linear progress for stable speed
+            const currentProgress = progress * 100;
+
+            this.progressFill.style.width = `${currentProgress}%`;
+            this.progressGlow.style.width = `${currentProgress}%`;
+            if (this.progressEdge) {
+                this.progressEdge.style.left = `calc(${currentProgress}% - 3px)`;
+            }
+            this.progressPercent.textContent = `${Math.floor(currentProgress)}%`;
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                setTimeout(() => {
+                    this.completeLoading();
+                }, 500);
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }
+
+    async updateStageTexts() {
         for (let i = 0; i < this.stages.length; i++) {
             if (this.isComplete) break;
-
             const stage = this.stages[i];
-            this.currentStage = i;
-
-            // Update stage text with fade
             await this.updateStageText(stage.text);
-
-            // Animate progress to stage target
-            await this.animateProgressTo(stage.progress, stage.duration);
+            await new Promise(r => setTimeout(r, stage.duration));
         }
-
-        // Complete loading
-        setTimeout(() => {
-            this.completeLoading();
-        }, 500);
     }
 
     updateStageText(text) {
         return new Promise(resolve => {
+            if (this.stageText.textContent === text) return resolve();
             this.stageText.style.opacity = '0';
+            this.stageText.style.transform = 'translateY(10px)';
 
             setTimeout(() => {
                 this.stageText.textContent = text;
                 this.stageText.style.opacity = '1';
+                this.stageText.style.transform = 'translateY(0)';
                 resolve();
-            }, 200);
-        });
-    }
-
-    animateProgressTo(targetProgress, duration) {
-        return new Promise(resolve => {
-            const startProgress = parseFloat(this.progressFill.style.width) || 0;
-            const progressDiff = targetProgress - startProgress;
-            const startTime = performance.now();
-
-            const animate = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const rawProgress = Math.min(elapsed / duration, 1);
-                const easedProgress = this.easeInOutQuart(rawProgress);
-
-                const currentProgress = startProgress + (progressDiff * easedProgress);
-
-                this.progressFill.style.width = `${currentProgress}%`;
-                this.progressGlow.style.width = `${currentProgress}%`;
-                if (this.progressEdge) {
-                    this.progressEdge.style.left = `calc(${currentProgress}% - 3px)`;
-                }
-                this.progressPercent.textContent = `${Math.floor(currentProgress)}%`;
-
-                if (rawProgress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    resolve();
-                }
-            };
-
-            requestAnimationFrame(animate);
+            }, 300);
         });
     }
 
