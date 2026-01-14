@@ -1,0 +1,571 @@
+/* ========================================
+   WHEELUP GANGZ - COMPREHENSIVE RESPONSIVE CSS
+   Optimized for all device sizes
+   ======================================== */
+
+/* ========================================
+   BREAKPOINT VARIABLES
+   Desktop First - Override for mobile only
+   ======================================== */
+
+/*
+   Breakpoints:
+   - xs: 0-479px (small phones)
+   - sm: 480-639px (phones)
+   - md: 640-767px (large phones/small tablets)
+   - lg: 768-1023px (tablets)
+   - xl: 1024-1279px (laptops)
+   - 2xl: 1280px+ (desktops)
+*/
+
+/* ========================================
+   MOBILE ONLY STYLES (max-width: 767px)
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    /* Typography Scaling */
+    html {
+        font-size: 14px;
+    }
+
+    /* Navbar Mobile */
+    .navbar-3d {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-3d .nav-logo img {
+        height: 32px;
+    }
+
+    .navbar-3d .nav-links {
+        display: none;
+    }
+
+    .navbar-3d .nav-menu-btn {
+        display: flex;
+    }
+
+    /* Hero Section Mobile Fix */
+    .hero-section-3d {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero-section-3d .section-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 1rem;
+        padding-bottom: 4rem;
+    }
+
+    .hero-content-3d {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-logo {
+        max-width: 85%;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .hero-slogan {
+        font-size: 0.7rem !important;
+        letter-spacing: 3px !important;
+        margin-top: 0.5rem;
+        padding: 0 1rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.85rem !important;
+        margin: 0.75rem 0 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+
+    .hero-cta .btn-3d,
+    .hero-cta .btn-outline-3d,
+    .hero-cta .btn-primary-3d {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Scroll Indicator Mobile - Hide on very small screens */
+    .scroll-indicator-3d {
+        display: none;
+    }
+
+    /* Section Padding Mobile */
+    .section-3d {
+        padding: 3rem 1rem;
+    }
+
+    .section-content {
+        padding: 0 0.5rem;
+    }
+
+    .section-title-3d {
+        font-size: 2rem;
+    }
+
+    /* About Section Mobile */
+    .about-content-3d {
+        padding: 0 0.5rem;
+    }
+
+    .about-content-3d p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .glass-panel {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+    }
+
+    /* Gallery Mobile */
+    .gallery-section-3d {
+        padding: 2rem 1rem;
+    }
+
+    .instagram-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .gallery-item {
+        border-radius: 8px;
+    }
+
+    .instagram-link {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* Shop Mobile */
+    .shop-section-3d {
+        padding: 2rem 1rem;
+    }
+
+    .shop-categories {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .category-tab {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.75rem;
+        justify-content: center;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .product-card {
+        max-width: 100%;
+    }
+
+    .product-info h3 {
+        font-size: 1rem;
+    }
+
+    .product-info p {
+        font-size: 0.8rem;
+    }
+
+    /* Contact Mobile */
+    .contact-section-3d {
+        padding: 2rem 1rem;
+    }
+
+    .social-links-3d {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .social-link-3d {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    /* Footer Mobile */
+    .footer-3d {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* ========================================
+   SMALL PHONES (480px - 639px)
+   ======================================== */
+
+@media (min-width: 480px) and (max-width: 767px) {
+    html {
+        font-size: 15px;
+    }
+
+    .hero-slogan {
+        letter-spacing: 5px !important;
+    }
+
+    .instagram-gallery {
+        gap: 0.75rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .scroll-indicator-3d {
+        display: flex;
+        bottom: 1rem;
+    }
+}
+
+/* ========================================
+   LARGE PHONES / SMALL TABLETS (640px - 767px)
+   ======================================== */
+
+@media (min-width: 640px) and (max-width: 767px) {
+    html {
+        font-size: 16px;
+    }
+
+    .navbar-3d {
+        padding: 1rem 1.5rem;
+    }
+
+    .hero-slogan {
+        font-size: 0.8rem !important;
+        letter-spacing: 6px !important;
+    }
+
+    .hero-tagline {
+        font-size: 1rem !important;
+    }
+
+    .hero-cta {
+        flex-direction: row;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .hero-cta .btn-3d,
+    .hero-cta .btn-outline-3d,
+    .hero-cta .btn-primary-3d {
+        width: auto;
+    }
+
+    .section-title-3d {
+        font-size: 2.5rem;
+    }
+
+    .glass-panel {
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+    }
+
+    .instagram-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .gallery-item {
+        border-radius: 10px;
+    }
+
+    .shop-categories {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-links-3d {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ========================================
+   TABLETS (768px+)
+   ======================================== */
+
+@media (min-width: 768px) {
+    .navbar-3d {
+        padding: 1.5rem 2rem;
+    }
+
+    .navbar-3d .nav-logo img {
+        height: 40px;
+    }
+
+    .navbar-3d .nav-links {
+        display: flex;
+    }
+
+    .navbar-3d .nav-menu-btn {
+        display: none;
+    }
+
+    .hero-logo {
+        max-width: 500px;
+    }
+
+    .hero-slogan {
+        font-size: 0.9rem !important;
+        letter-spacing: 8px !important;
+    }
+
+    .hero-tagline {
+        font-size: 1.1rem !important;
+    }
+
+    .section-3d {
+        padding: 4rem 2rem;
+    }
+
+    .section-title-3d {
+        font-size: 3rem;
+    }
+
+    .glass-panel {
+        padding: 3rem 2.5rem;
+    }
+
+    .about-content-3d p {
+        font-size: 1.1rem;
+    }
+
+    .instagram-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .scroll-indicator-3d {
+        bottom: 2rem;
+    }
+}
+
+/* ========================================
+   LAPTOPS (1024px+)
+   ======================================== */
+
+@media (min-width: 1024px) {
+    .navbar-3d {
+        padding: 2rem 3rem;
+    }
+
+    .hero-logo {
+        max-width: 600px;
+    }
+
+    .hero-slogan {
+        letter-spacing: 10px !important;
+    }
+
+    .section-title-3d {
+        font-size: 3.5rem;
+    }
+
+    .glass-panel {
+        padding: 4rem;
+        border-radius: 24px;
+    }
+
+    .about-content-3d p {
+        font-size: 1.25rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* ========================================
+   DESKTOPS (1280px+)
+   ======================================== */
+
+@media (min-width: 1280px) {
+    html {
+        font-size: 17px;
+    }
+
+    .hero-logo {
+        max-width: 700px;
+    }
+
+    .section-title-3d {
+        font-size: 4rem;
+    }
+}
+
+/* ========================================
+   LARGE DESKTOPS (1536px+)
+   ======================================== */
+
+@media (min-width: 1536px) {
+    html {
+        font-size: 18px;
+    }
+
+    .hero-logo {
+        max-width: 800px;
+    }
+
+    .section-content {
+        max-width: 1400px;
+    }
+}
+
+/* ========================================
+   LANDSCAPE MODE FIXES
+   ======================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section-3d {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    .hero-logo {
+        max-width: 300px;
+    }
+
+    .hero-slogan,
+    .hero-tagline {
+        display: none;
+    }
+
+    .scroll-indicator-3d {
+        display: none;
+    }
+}
+
+/* ========================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    /* Larger touch targets */
+    .btn-3d,
+    .btn-outline-3d,
+    .btn-primary-3d,
+    .btn-cta-3d {
+        min-height: 48px;
+        min-width: 48px;
+    }
+
+    .category-tab {
+        min-height: 48px;
+    }
+
+    .social-link-3d {
+        min-height: 44px;
+    }
+
+    .nav-menu-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Disable hover effects on touch */
+    .gallery-item:hover {
+        transform: none;
+    }
+
+    .product-card:hover {
+        transform: none;
+    }
+}
+
+/* ========================================
+   HIGH DPI / RETINA DISPLAYS
+   ======================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    /* Sharper borders */
+    .glass-panel {
+        border-width: 0.5px;
+    }
+
+    .title-underline {
+        height: 1.5px;
+    }
+}
+
+/* ========================================
+   SAFE AREA INSETS (Notched devices)
+   ======================================== */
+
+@supports (padding: max(0px)) {
+    .navbar-3d {
+        padding-top: max(0.75rem, env(safe-area-inset-top));
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+
+    .footer-3d {
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .navbar-3d,
+    .scroll-indicator-3d,
+    .scroll-progress-bar,
+    #canvas-container {
+        display: none !important;
+    }
+
+    .section-3d {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}

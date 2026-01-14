@@ -1,0 +1,800 @@
+/* ========================================
+   WHEELUP GANGZ - UI/UX Pro Max Upgrade
+   Enhanced by UI/UX Pro Max Skill
+   Version: 1.0.0 | Date: 2026-01-14
+   ======================================== */
+
+/* ========================================
+   ENHANCED COLOR SYSTEM (Pro Max Palette)
+   Based on: Sports/Urban + Dark Mode OLED
+   ======================================== */
+
+:root {
+    /* Pro Max Primary Colors */
+    --pm-primary: #3B82F6;
+    /* Electric Blue - Energy */
+    --pm-primary-glow: rgba(59, 130, 246, 0.5);
+    --pm-secondary: #60A5FA;
+    /* Light Blue */
+    --pm-cta: #F97316;
+    /* Energetic Orange */
+    --pm-cta-glow: rgba(249, 115, 22, 0.5);
+
+    /* Pro Max Neutrals (OLED Dark) */
+    --pm-bg-dark: #050505;
+    /* True OLED Black */
+    --pm-bg-elevated: #0A0A0A;
+    --pm-surface: #111111;
+    --pm-border: rgba(255, 255, 255, 0.08);
+    --pm-border-hover: rgba(255, 255, 255, 0.2);
+
+    /* Pro Max Text */
+    --pm-text-primary: #FFFFFF;
+    --pm-text-secondary: rgba(255, 255, 255, 0.7);
+    --pm-text-muted: rgba(255, 255, 255, 0.4);
+
+    /* Pro Max Effects */
+    --pm-glow-blue: 0 0 40px rgba(59, 130, 246, 0.4);
+    --pm-glow-white: 0 0 30px rgba(255, 255, 255, 0.2);
+    --pm-glow-orange: 0 0 30px rgba(249, 115, 22, 0.4);
+
+    /* Pro Max Transitions (Smooth but Snappy) */
+    --pm-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --pm-transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --pm-transition-smooth: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   ENHANCED GLASS PANELS (Glassmorphism Pro)
+   Rule: Use bg-white/80+ in light, proper blur
+   ======================================== */
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 4rem;
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    transition: var(--pm-transition-smooth);
+}
+
+.glass-panel:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 1px 0 rgba(255, 255, 255, 0.15) inset;
+}
+
+/* ========================================
+   ENHANCED NAVBAR (Floating Style)
+   Rule: Add top-4 spacing, proper backdrop
+   ======================================== */
+
+.navbar-3d {
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom,
+            rgba(5, 5, 5, 0.8) 0%,
+            rgba(5, 5, 5, 0.4) 50%,
+            transparent 100%);
+    transition: var(--pm-transition-smooth);
+}
+
+.navbar-3d.scrolled {
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Nav Links Enhanced Hover */
+.navbar-3d .nav-links a {
+    color: var(--pm-text-secondary);
+    transition: var(--pm-transition-normal);
+    cursor: pointer;
+}
+
+.navbar-3d .nav-links a:hover {
+    color: var(--pm-text-primary);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.navbar-3d .nav-links a::after {
+    background: linear-gradient(90deg, var(--pm-primary), var(--pm-secondary));
+    height: 2px;
+    transition: var(--pm-transition-normal);
+}
+
+/* ========================================
+   ENHANCED BUTTONS (Pro Max CTA)
+   Rule: cursor-pointer, glow effects, no layout shift
+   ======================================== */
+
+.btn-3d,
+.btn-outline-3d,
+.btn-primary-3d {
+    cursor: pointer;
+    transition: var(--pm-transition-normal);
+}
+
+/* Primary Button - Electric Blue Glow */
+.btn-primary-3d {
+    background: linear-gradient(135deg, var(--pm-primary) 0%, var(--pm-secondary) 100%);
+    color: var(--pm-text-primary);
+    box-shadow: var(--pm-glow-blue);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary-3d:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 50px rgba(59, 130, 246, 0.6),
+        0 15px 40px rgba(59, 130, 246, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary-3d:active {
+    transform: translateY(-2px);
+}
+
+/* Outline Button - Enhanced Glow */
+.btn-outline-3d {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--pm-text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-outline-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transition: var(--pm-transition-smooth);
+}
+
+.btn-outline-3d:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: var(--pm-glow-white);
+    transform: translateY(-4px);
+}
+
+.btn-outline-3d:hover::before {
+    left: 100%;
+}
+
+/* CTA Button - Orange Energy (for Shop, etc.) */
+.btn-cta-3d {
+    background: linear-gradient(135deg, var(--pm-cta) 0%, #FB923C 100%);
+    color: var(--pm-text-primary);
+    box-shadow: var(--pm-glow-orange);
+    border: none;
+    cursor: pointer;
+    padding: 1rem 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: var(--pm-transition-normal);
+}
+
+.btn-cta-3d:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 50px rgba(249, 115, 22, 0.6),
+        0 15px 40px rgba(249, 115, 22, 0.3);
+}
+
+/* Pulse Animation for CTA */
+@keyframes pm-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 0 15px rgba(249, 115, 22, 0);
+    }
+}
+
+.btn-cta-3d.pulse {
+    animation: pm-pulse 2s infinite;
+}
+
+/* ========================================
+   ENHANCED HERO SECTION
+   Immersive Experience Pattern
+   ======================================== */
+
+.hero-section-3d {
+    position: relative;
+}
+
+/* Logo Enhancement */
+.hero-logo {
+    filter:
+        brightness(1.15) drop-shadow(0 0 40px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 80px rgba(59, 130, 246, 0.15));
+    transition: var(--pm-transition-smooth);
+}
+
+.hero-logo:hover {
+    filter:
+        brightness(1.25) drop-shadow(0 0 50px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 100px rgba(59, 130, 246, 0.25));
+    transform: scale(1.02);
+}
+
+/* Slogan Enhancement */
+.hero-slogan {
+    color: var(--pm-text-muted);
+    letter-spacing: 10px;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    transition: var(--pm-transition-smooth);
+}
+
+/* Tagline Enhancement */
+.hero-tagline {
+    color: var(--pm-text-muted);
+    opacity: 0.8;
+    transition: var(--pm-transition-smooth);
+}
+
+/* ========================================
+   ENHANCED SCROLL INDICATOR
+   ======================================== */
+
+.scroll-indicator-3d {
+    cursor: pointer;
+}
+
+.scroll-indicator-3d:hover {
+    opacity: 1 !important;
+}
+
+.scroll-indicator-3d:hover .scroll-arrow {
+    color: var(--pm-primary);
+    animation-duration: 0.8s;
+}
+
+/* ========================================
+   ENHANCED SOCIAL LINKS
+   Rule: cursor-pointer, hover feedback
+   ======================================== */
+
+.social-link-3d {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link-3d::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--pm-primary);
+    transition: var(--pm-transition-normal);
+    transform: translateX(-50%);
+}
+
+.social-link-3d:hover {
+    color: var(--pm-text-primary);
+    border-color: var(--pm-primary);
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.social-link-3d:hover::before {
+    width: 100%;
+}
+
+/* ========================================
+   ENHANCED SECTION TITLES
+   ======================================== */
+
+.section-title-3d {
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+    transition: var(--pm-transition-smooth);
+}
+
+.section-header-3d:hover .section-title-3d {
+    text-shadow: 0 0 60px rgba(255, 255, 255, 0.25);
+}
+
+.title-underline {
+    background: linear-gradient(90deg,
+            transparent,
+            var(--pm-primary),
+            var(--pm-secondary),
+            transparent);
+    transition: var(--pm-transition-smooth);
+}
+
+.section-header-3d:hover .title-underline {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+/* ========================================
+   ENHANCED SCROLL PROGRESS BAR
+   ======================================== */
+
+.scroll-progress-bar {
+    background: linear-gradient(90deg,
+            var(--pm-primary),
+            var(--pm-secondary),
+            var(--pm-cta));
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   Rule: Focus states visible, reduced motion
+   ======================================== */
+
+/* Focus States */
+.btn-3d:focus-visible,
+.btn-outline-3d:focus-visible,
+.btn-primary-3d:focus-visible,
+.social-link-3d:focus-visible,
+.navbar-3d .nav-links a:focus-visible {
+    outline: 2px solid var(--pm-primary);
+    outline-offset: 4px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    /* EXCEPTION: Keep loading screen animations running */
+    .loading-screen .gear-1 {
+        animation: gearSpin 8s linear 1s infinite, gearFadeIn 1s ease 1s forwards !important;
+    }
+
+    .loading-screen .gear-2 {
+        animation: gearSpinReverse 6s linear 1.2s infinite, gearFadeIn 1s ease 1.2s forwards !important;
+    }
+
+    .loading-screen .gear-3 {
+        animation: gearSpin 4s linear 1.4s infinite, gearFadeIn 1s ease 1.4s forwards !important;
+    }
+
+    .loading-screen .chain-container {
+        animation: chainRotate 20s linear infinite !important;
+    }
+
+    .loading-screen .glow-layer {
+        animation: glowPulse 3s ease-in-out 2s infinite !important;
+    }
+
+    .loading-screen .hero-wheel {
+        animation: wheelReveal 2s ease 0.5s forwards !important;
+    }
+
+    .loading-screen .wheel-image {
+        animation: wheelBrighten 3s ease 1s forwards !important;
+    }
+
+    .hero-logo {
+        animation: none;
+    }
+
+    .scroll-indicator-3d {
+        animation: fadeIn 0.01ms forwards;
+    }
+}
+
+/* ========================================
+   NEON BORDER ENHANCEMENT
+   (Disabled - Removed per user request)
+   ======================================== */
+
+/* Neon border effect removed */
+
+/* ========================================
+   MICRO-ANIMATIONS (Pro Max Standard)
+   ======================================== */
+
+/* Fade In Up */
+@keyframes pm-fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale In */
+@keyframes pm-scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Glow Pulse */
+@keyframes pm-glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+    }
+}
+
+/* Apply to elements */
+.glass-panel {
+    animation: pm-scaleIn 0.6s var(--pm-transition-smooth) backwards;
+}
+
+.section-3d:nth-child(2) .glass-panel {
+    animation-delay: 0.2s;
+}
+
+.section-3d:nth-child(3) .glass-panel {
+    animation-delay: 0.4s;
+}
+
+/* ========================================
+   RESPONSIVE ENHANCEMENTS
+   ======================================== */
+
+@media (max-width: 768px) {
+    .glass-panel {
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+    }
+
+    .btn-3d,
+    .btn-outline-3d,
+    .btn-primary-3d,
+    .btn-cta-3d {
+        width: 100%;
+        padding: 1.2rem 2rem;
+        text-align: center;
+    }
+
+    body::before,
+    body::after {
+        display: none;
+        /* Hide neon border on mobile for performance */
+    }
+}
+
+/* ========================================
+   SHOP SECTION - Product Showcase
+   ======================================== */
+
+/* Shop Section Container */
+.shop-section-3d {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-section-3d .section-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Category Tabs */
+.shop-categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: var(--pm-text-secondary);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--pm-transition-normal);
+}
+
+.category-tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: var(--pm-text-primary);
+    transform: translateY(-3px);
+}
+
+.category-tab.active {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(251, 146, 60, 0.1));
+    border-color: rgba(249, 115, 22, 0.5);
+    color: var(--pm-cta);
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
+}
+
+.tab-icon {
+    font-size: 1.2rem;
+}
+
+/* Product Grids */
+.product-grids {
+    position: relative;
+}
+
+.product-grid {
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    animation: pm-fadeInUp 0.5s ease-out;
+}
+
+.product-grid.active {
+    display: grid;
+}
+
+/* Product Card */
+.product-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--pm-transition-smooth);
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(249, 115, 22, 0.5);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(249, 115, 22, 0.2);
+}
+
+/* Product Image */
+.product-image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--pm-transition-smooth);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+/* Product Image Overlay */
+.product-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+    opacity: 0;
+    transition: var(--pm-transition-normal);
+}
+
+.product-card:hover .product-image::after {
+    opacity: 1;
+}
+
+/* Product Info */
+.product-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--pm-text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.product-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--pm-text-muted);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .shop-categories {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .category-tab {
+        justify-content: center;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .product-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* ========================================
+   INSTAGRAM GALLERY - Photo Grid
+   ======================================== */
+
+/* Gallery Subtitle */
+.gallery-subtitle {
+    color: var(--pm-cta);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+/* Gallery Section */
+.gallery-section-3d {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-section-3d .section-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Instagram Gallery Grid */
+.instagram-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--pm-transition-smooth);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--pm-transition-smooth);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(249, 115, 22, 0.3);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Instagram Link */
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #E1306C, #F77737, #FCAF45);
+    border-radius: 50px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: var(--pm-transition-normal);
+    margin-top: 1rem;
+}
+
+.instagram-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(225, 48, 108, 0.4);
+}
+
+.instagram-link svg {
+    transition: var(--pm-transition-normal);
+}
+
+.instagram-link:hover svg {
+    transform: rotate(15deg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .instagram-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .instagram-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .gallery-item {
+        border-radius: 8px;
+    }
+}
+
+/* ========================================
+   END OF UI/UX PRO MAX UPGRADE
+   ======================================== */

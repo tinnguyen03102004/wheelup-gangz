@@ -1,0 +1,383 @@
+/* ========================================
+   WHEELUP GANGZ - Loading Screen Styles
+   Spinning Wheel Animation | 4s+ Duration
+   ======================================== */
+
+/* Loading Screen Container */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* ========================================
+   WHEEL ANIMATION
+   ======================================== */
+
+.wheel-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    animation: spin 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.wheel.spinning {
+    animation-play-state: running;
+}
+
+/* Rim */
+.rim {
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 4;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 0.2s forwards;
+}
+
+.rim-inner {
+    fill: none;
+    stroke: var(--color-dark-gray);
+    stroke-width: 2;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 0.3s forwards;
+}
+
+/* Hub */
+.hub {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 0.8s forwards;
+}
+
+.hub-inner {
+    fill: var(--color-accent);
+    opacity: 0;
+    animation: fadeIn 0.5s ease 1s forwards, pulse 2s ease-in-out 1.5s infinite;
+}
+
+/* Spokes */
+.spoke {
+    stroke: var(--color-white);
+    stroke-width: 1;
+    opacity: 0;
+}
+
+.spoke:nth-child(1) {
+    animation: spokeAppear 0.3s ease 0.4s forwards;
+}
+
+.spoke:nth-child(2) {
+    animation: spokeAppear 0.3s ease 0.45s forwards;
+}
+
+.spoke:nth-child(3) {
+    animation: spokeAppear 0.3s ease 0.5s forwards;
+}
+
+.spoke:nth-child(4) {
+    animation: spokeAppear 0.3s ease 0.55s forwards;
+}
+
+.spoke:nth-child(5) {
+    animation: spokeAppear 0.3s ease 0.6s forwards;
+}
+
+.spoke:nth-child(6) {
+    animation: spokeAppear 0.3s ease 0.65s forwards;
+}
+
+.spoke:nth-child(7) {
+    animation: spokeAppear 0.3s ease 0.7s forwards;
+}
+
+.spoke:nth-child(8) {
+    animation: spokeAppear 0.3s ease 0.75s forwards;
+}
+
+.spoke.secondary {
+    stroke: var(--color-gray);
+    stroke-width: 0.5;
+}
+
+.spoke.secondary:nth-child(9) {
+    animation: spokeAppear 0.3s ease 0.5s forwards;
+}
+
+.spoke.secondary:nth-child(10) {
+    animation: spokeAppear 0.3s ease 0.55s forwards;
+}
+
+.spoke.secondary:nth-child(11) {
+    animation: spokeAppear 0.3s ease 0.6s forwards;
+}
+
+.spoke.secondary:nth-child(12) {
+    animation: spokeAppear 0.3s ease 0.65s forwards;
+}
+
+.spoke.secondary:nth-child(13) {
+    animation: spokeAppear 0.3s ease 0.7s forwards;
+}
+
+.spoke.secondary:nth-child(14) {
+    animation: spokeAppear 0.3s ease 0.75s forwards;
+}
+
+.spoke.secondary:nth-child(15) {
+    animation: spokeAppear 0.3s ease 0.8s forwards;
+}
+
+.spoke.secondary:nth-child(16) {
+    animation: spokeAppear 0.3s ease 0.85s forwards;
+}
+
+/* Wheel Glow Effect */
+.wheel-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle,
+            rgba(212, 175, 55, 0.15) 0%,
+            rgba(212, 175, 55, 0.05) 40%,
+            transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: glowPulse 2s ease-in-out 1.2s infinite;
+    pointer-events: none;
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+
+.loading-logo {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: logoReveal 0.8s ease 1.5s forwards;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+/* ========================================
+   PROGRESS BAR
+   ======================================== */
+
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 1.8s forwards;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 2px;
+    background: var(--color-dark-gray);
+    border-radius: 1px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,
+            var(--color-accent-dark),
+            var(--color-accent),
+            var(--color-accent-bright));
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+    transition: width 0.1s linear;
+}
+
+.progress-text {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-gray);
+    letter-spacing: 0.2em;
+}
+
+/* ========================================
+   TAGLINE
+   ======================================== */
+
+.tagline {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    color: var(--color-gray);
+    opacity: 0;
+    animation: fadeIn 0.5s ease 2.2s forwards;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spokeAppear {
+    from {
+        opacity: 0;
+        stroke-dasharray: 0 100;
+    }
+
+    to {
+        opacity: 0.8;
+        stroke-dasharray: 100 0;
+    }
+}
+
+@keyframes logoReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 480px) {
+    .wheel-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .wheel-glow {
+        width: 170px;
+        height: 170px;
+    }
+
+    .logo-img {
+        height: 45px;
+    }
+
+    .progress-bar {
+        width: 150px;
+    }
+
+    .tagline {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+    }
+}
+
+/* ========================================
+   LOADING COMPLETE STATE
+   ======================================== */
+
+.loading-screen.complete .wheel {
+    animation: spin 1s linear infinite;
+    /* Speed up before exit */
+}
+
+.loading-screen.complete .wheel-glow {
+    animation: glowBurst 0.5s ease forwards;
+}
+
+@keyframes glowBurst {
+    0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+    }
+}

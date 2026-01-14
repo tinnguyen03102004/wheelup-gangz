@@ -1,0 +1,199 @@
+/* ========================================
+   WHEELUP GANGZ - i18n & Navbar Restructure CSS
+   ======================================== */
+
+/* ========================================
+   NAVBAR RESTRUCTURE
+   Layout: [Menu LEFT] [Logo CENTER] [Actions RIGHT]
+   ======================================== */
+
+.navbar-3d {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LEFT: Menu Links */
+.navbar-3d .nav-links {
+    display: flex;
+    gap: 2rem;
+    order: 1;
+}
+
+/* CENTER: Logo (hidden initially, appears on scroll) */
+.nav-logo-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    order: 2;
+}
+
+.nav-logo-center img {
+    height: 36px;
+    width: auto;
+}
+
+/* Show logo when scrolled */
+.navbar-3d.scrolled .nav-logo-center {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+/* RIGHT: Actions container */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    order: 3;
+}
+
+/* ========================================
+   LANGUAGE TOGGLE BUTTON
+   ======================================== */
+
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.lang-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Globe Icon */
+.lang-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.lang-toggle:hover .lang-icon {
+    transform: rotate(15deg);
+}
+
+/* Toggle Text */
+.lang-toggle-text {
+    font-weight: 600;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 767px) {
+    .navbar-3d {
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Hide desktop menu links on mobile */
+    .navbar-3d .nav-links {
+        display: none;
+    }
+
+    /* Menu button on LEFT - first child in DOM */
+    .nav-menu-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    /* Center logo on mobile */
+    .nav-logo-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    }
+
+    .navbar-3d.scrolled .nav-logo-center {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    .nav-logo-center img {
+        height: 28px;
+    }
+
+    /* Actions (toggle) on RIGHT - last child in DOM */
+    .nav-actions {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Smaller toggle on mobile */
+    .lang-toggle {
+        padding: 0.4rem 0.6rem;
+        gap: 0.35rem;
+    }
+
+    .lang-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .lang-toggle-text {
+        font-size: 0.7rem;
+    }
+}
+
+/* Desktop: hide mobile menu button */
+@media (min-width: 768px) {
+    .nav-menu-btn {
+        display: none;
+    }
+}
+
+/* ========================================
+   SCROLL-TRIGGERED LOGO ANIMATION
+   Hero logo shrinks and moves to navbar
+   ======================================== */
+
+/* The hero logo container */
+.hero-logo-container {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When scrolled past hero, hero logo can fade */
+body.scrolled-past-hero .hero-logo-container {
+    opacity: 0.3;
+    transform: scale(0.9);
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS FOR TEXT CHANGES
+   ======================================== */
+
+[data-i18n] {
+    transition: opacity 0.15s ease;
+}
+
+/* Brief flash during language change */
+.lang-changing [data-i18n] {
+    opacity: 0.7;
+}

@@ -1,0 +1,849 @@
+/* ========================================
+   WHEELUP GANGZ - Loading Screen V3
+   Advanced Mechanical Assembly Animation
+   ======================================== */
+
+/* Loading Screen Container */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0A0A0A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.loading-screen.fade-out {
+    animation: screenFadeOut 1.2s ease forwards;
+}
+
+@keyframes screenFadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Particle Canvas */
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Vignette Effect */
+.vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    z-index: 10;
+}
+
+/* ========================================
+   HERO WHEEL CONTAINER
+   ======================================== */
+
+.hero-wheel-container {
+    position: relative;
+    width: 450px;
+    height: 450px;
+}
+
+.hero-wheel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: wheelReveal 2s ease 0.5s forwards;
+}
+
+.wheel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0.8);
+    animation: wheelBrighten 3s ease 1s forwards;
+}
+
+@keyframes wheelReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7) rotate(-30deg);
+        filter: blur(10px);
+    }
+
+    50% {
+        opacity: 0.8;
+        filter: blur(2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes wheelBrighten {
+    0% {
+        filter: brightness(0.8);
+    }
+
+    50% {
+        filter: brightness(1.2);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+/* ========================================
+   GLOW LAYERS
+   ======================================== */
+
+.glow-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.glow-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    animation: glowPulse 3s ease-in-out 2s infinite;
+}
+
+.glow-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    animation: glowPulse 3s ease-in-out 2.3s infinite;
+}
+
+.glow-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 40%);
+    animation: glowPulse 3s ease-in-out 2.6s infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* ========================================
+   MECHANICAL GEARS
+   ======================================== */
+
+.mechanical-gears {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.gear {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+/* Large gear - top right */
+.gear-1 {
+    width: 80px;
+    height: 80px;
+    top: -10%;
+    right: -5%;
+    animation: gearSpin 8s linear 1s infinite, gearFadeIn 1s ease 1s forwards;
+}
+
+/* Medium gear - bottom left */
+.gear-2 {
+    width: 60px;
+    height: 60px;
+    bottom: 0%;
+    left: -8%;
+    animation: gearSpinReverse 6s linear 1.2s infinite, gearFadeIn 1s ease 1.2s forwards;
+}
+
+/* Small gear - top left */
+.gear-3 {
+    width: 45px;
+    height: 45px;
+    top: 5%;
+    left: 5%;
+    animation: gearSpin 4s linear 1.4s infinite, gearFadeIn 1s ease 1.4s forwards;
+}
+
+@keyframes gearSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gearSpinReverse {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes gearFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   CHAIN LINKS
+   ======================================== */
+
+.chain-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 350px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+    animation: chainRotate 20s linear infinite;
+}
+
+.chain-link {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: linear-gradient(135deg, #555 0%, #333 50%, #555 100%);
+    border-radius: 3px;
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+}
+
+.chain-link::before,
+.chain-link::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #666;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.chain-link::before {
+    left: 1px;
+}
+
+.chain-link::after {
+    right: 1px;
+}
+
+/* Position chain links in a circle */
+.cl-1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: chainLinkFade 0.5s ease 2s forwards;
+}
+
+.cl-2 {
+    top: 15%;
+    right: 15%;
+    transform: rotate(45deg);
+    animation: chainLinkFade 0.5s ease 2.1s forwards;
+}
+
+.cl-3 {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) rotate(90deg);
+    animation: chainLinkFade 0.5s ease 2.2s forwards;
+}
+
+.cl-4 {
+    bottom: 15%;
+    right: 15%;
+    transform: rotate(135deg);
+    animation: chainLinkFade 0.5s ease 2.3s forwards;
+}
+
+.cl-5 {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    animation: chainLinkFade 0.5s ease 2.4s forwards;
+}
+
+.cl-6 {
+    bottom: 15%;
+    left: 15%;
+    transform: rotate(225deg);
+    animation: chainLinkFade 0.5s ease 2.5s forwards;
+}
+
+.cl-7 {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) rotate(270deg);
+    animation: chainLinkFade 0.5s ease 2.6s forwards;
+}
+
+.cl-8 {
+    top: 15%;
+    left: 15%;
+    transform: rotate(315deg);
+    animation: chainLinkFade 0.5s ease 2.7s forwards;
+}
+
+@keyframes chainRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes chainLinkFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.6;
+    }
+}
+
+/* ========================================
+   SPARK BURST
+   ======================================== */
+
+.spark-burst {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+}
+
+.spark-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, #ffffff, transparent);
+    transform-origin: top center;
+    opacity: 0;
+}
+
+.spark-line.s1 {
+    transform: rotate(0deg);
+    animation: sparkShoot 0.8s ease 1.5s forwards;
+}
+
+.spark-line.s2 {
+    transform: rotate(25deg);
+    animation: sparkShoot 0.8s ease 1.6s forwards;
+}
+
+.spark-line.s3 {
+    transform: rotate(50deg);
+    animation: sparkShoot 0.8s ease 1.7s forwards;
+}
+
+.spark-line.s4 {
+    transform: rotate(-25deg);
+    animation: sparkShoot 0.8s ease 1.55s forwards;
+}
+
+.spark-line.s5 {
+    transform: rotate(-50deg);
+    animation: sparkShoot 0.8s ease 1.65s forwards;
+}
+
+.spark-line.s6 {
+    transform: rotate(75deg);
+    animation: sparkShoot 0.8s ease 1.75s forwards;
+}
+
+.spark-line.s7 {
+    transform: rotate(-75deg);
+    animation: sparkShoot 0.8s ease 1.8s forwards;
+}
+
+.spark-line.s8 {
+    transform: rotate(12deg);
+    animation: sparkShoot 0.8s ease 1.58s forwards;
+}
+
+@keyframes sparkShoot {
+    0% {
+        height: 0;
+        opacity: 1;
+    }
+
+    50% {
+        height: 80px;
+        opacity: 1;
+    }
+
+    100% {
+        height: 80px;
+        opacity: 0;
+        transform: translateY(-50px) rotate(var(--rotation, 0deg));
+    }
+}
+
+/* ========================================
+   FLOATING TRIANGLES
+   ======================================== */
+
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid rgba(255, 255, 255, 0.8);
+    opacity: 0;
+}
+
+.triangle.t1 {
+    top: 10%;
+    left: 20%;
+    animation: floatTriangle 4s ease-in-out 2s infinite;
+}
+
+.triangle.t2 {
+    top: 15%;
+    right: 25%;
+    transform: rotate(45deg);
+    animation: floatTriangle 4.5s ease-in-out 2.2s infinite;
+}
+
+.triangle.t3 {
+    top: 25%;
+    left: 10%;
+    transform: rotate(-30deg);
+    animation: floatTriangle 3.8s ease-in-out 2.4s infinite;
+}
+
+.triangle.t4 {
+    bottom: 30%;
+    right: 15%;
+    transform: rotate(120deg);
+    animation: floatTriangle 4.2s ease-in-out 2.6s infinite;
+}
+
+.triangle.t5 {
+    top: 5%;
+    left: 35%;
+    transform: rotate(60deg);
+    border-bottom-width: 10px;
+    border-left-width: 6px;
+    border-right-width: 6px;
+    animation: floatTriangle 5s ease-in-out 2.8s infinite;
+}
+
+.triangle.t6 {
+    top: 20%;
+    right: 10%;
+    transform: rotate(-60deg);
+    border-bottom-width: 12px;
+    border-left-width: 7px;
+    border-right-width: 7px;
+    animation: floatTriangle 4.8s ease-in-out 3s infinite;
+}
+
+@keyframes floatTriangle {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translateY(0) rotate(var(--rotation, 0deg));
+    }
+
+    25% {
+        opacity: 0.9;
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translateY(-15px) rotate(calc(var(--rotation, 0deg) + 10deg));
+    }
+
+    75% {
+        opacity: 0.8;
+    }
+}
+
+/* ========================================
+   PROGRESS BAR V3
+   ======================================== */
+
+.progress-container-v3 {
+    width: 320px;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 3s forwards;
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.progress-label {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.stage-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: #888888;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+}
+
+.progress-track-v3 {
+    position: relative;
+    height: 4px;
+    background: linear-gradient(90deg, #1a1a1a, #2a2a2a, #1a1a1a);
+    border-radius: 2px;
+    overflow: visible;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.progress-glow-v3 {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 0%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    filter: blur(8px);
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
+.progress-bar-v3 {
+    position: relative;
+    height: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill-v3 {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,
+            #444444,
+            #888888,
+            #ffffff,
+            #888888,
+            #444444);
+    background-size: 300% 100%;
+    animation: progressShimmer 2s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+    transition: width 0.1s linear;
+}
+
+@keyframes progressShimmer {
+    0% {
+        background-position: 300% 0;
+    }
+
+    100% {
+        background-position: -300% 0;
+    }
+}
+
+.progress-particles-v3 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+}
+
+.progress-edge {
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+    opacity: 0.8;
+}
+
+.progress-edge.left {
+    left: -3px;
+    opacity: 0;
+    animation: edgeFadeIn 0.5s ease 3.5s forwards;
+}
+
+.progress-edge.right {
+    right: -3px;
+    opacity: 0;
+}
+
+@keyframes edgeFadeIn {
+    to {
+        opacity: 0.8;
+    }
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.progress-percent-v3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   FLASH OVERLAY
+   ======================================== */
+
+.flash-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.flash-overlay.flash {
+    animation: flashBurst 0.6s ease forwards;
+}
+
+@keyframes flashBurst {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   LOADING COMPLETE STATE
+   ======================================== */
+
+.loading-screen.complete .hero-wheel {
+    animation: wheelExplode 0.8s ease forwards;
+}
+
+.loading-screen.complete .glow-layer {
+    animation: glowExplode 0.6s ease forwards !important;
+}
+
+@keyframes wheelExplode {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        filter: brightness(1);
+    }
+
+    40% {
+        transform: translate(-50%, -50%) scale(1.15);
+        filter: brightness(1.5);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        filter: brightness(2);
+        opacity: 0;
+    }
+}
+
+@keyframes glowExplode {
+    0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(3);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .hero-wheel-container {
+        width: 350px;
+        height: 350px;
+    }
+
+    .progress-container-v3 {
+        width: 280px;
+    }
+
+    .glow-1 {
+        width: 400px;
+        height: 400px;
+    }
+
+    .glow-2 {
+        width: 320px;
+        height: 320px;
+    }
+
+    .glow-3 {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-wheel-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    .progress-container-v3 {
+        width: 240px;
+    }
+
+    .stage-text {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .progress-percent-v3 {
+        font-size: 12px;
+    }
+
+    .glow-1 {
+        width: 320px;
+        height: 320px;
+    }
+
+    .glow-2 {
+        width: 260px;
+        height: 260px;
+    }
+
+    .glow-3 {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Utility */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}

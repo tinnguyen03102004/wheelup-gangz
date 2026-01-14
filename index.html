@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WHEELUP GANGZ - Urban Cycling Culture - 3D Interactive Experience">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>WHEELUP GANGZ | Urban Cycling Culture</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading-v3.css">
+    <link rel="stylesheet" href="css/main-3d.css">
+    <link rel="stylesheet" href="css/ui-pro-max-upgrade.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/scroll-animations.css">
+    <link rel="stylesheet" href="css/i18n.css">
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Loading Screen V3 -->
+    <div id="loading-screen" class="loading-screen">
+        <canvas id="particle-canvas"></canvas>
+        <div class="vignette"></div>
+        <div class="loading-content">
+            <div class="hero-wheel-container">
+                <div class="hero-wheel">
+                    <img src="assets/images/loading-hero.png" alt="WHEELUP GANGZ" class="wheel-image">
+                </div>
+                <div class="glow-layer glow-1"></div>
+                <div class="glow-layer glow-2"></div>
+                <div class="glow-layer glow-3"></div>
+
+                <!-- Spinning Gears -->
+                <div class="mechanical-gears">
+                    <!-- Large gear - top right -->
+                    <svg class="gear gear-1" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z" />
+                    </svg>
+
+                    <!-- Medium gear - bottom left -->
+                    <svg class="gear gear-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z" />
+                    </svg>
+
+                    <!-- Small gear - top left -->
+                    <svg class="gear gear-3" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z" />
+                    </svg>
+                </div>
+
+                <!-- Chain Links -->
+                <div class="chain-container">
+                    <div class="chain-link cl-1"></div>
+                    <div class="chain-link cl-2"></div>
+                    <div class="chain-link cl-3"></div>
+                    <div class="chain-link cl-4"></div>
+                    <div class="chain-link cl-5"></div>
+                    <div class="chain-link cl-6"></div>
+                    <div class="chain-link cl-7"></div>
+                    <div class="chain-link cl-8"></div>
+                </div>
+
+                <div class="spark-burst">
+                    <div class="spark-line s1"></div>
+                    <div class="spark-line s2"></div>
+                    <div class="spark-line s3"></div>
+                    <div class="spark-line s4"></div>
+                    <div class="spark-line s5"></div>
+                    <div class="spark-line s6"></div>
+                    <div class="spark-line s7"></div>
+                    <div class="spark-line s8"></div>
+                </div>
+                <div class="floating-shapes">
+                    <div class="triangle t1"></div>
+                    <div class="triangle t2"></div>
+                    <div class="triangle t3"></div>
+                    <div class="triangle t4"></div>
+                    <div class="triangle t5"></div>
+                    <div class="triangle t6"></div>
+                </div>
+            </div>
+            <div class="progress-container-v3">
+                <div class="progress-label">
+                    <span class="stage-text">INITIALIZING SYSTEM</span>
+                </div>
+                <div class="progress-track-v3">
+                    <div class="progress-glow-v3"></div>
+                    <div class="progress-bar-v3">
+                        <div class="progress-fill-v3"></div>
+                    </div>
+                    <div class="progress-edge left"></div>
+                    <div class="progress-edge right"></div>
+                </div>
+                <div class="progress-stats">
+                    <span class="progress-percent-v3">0%</span>
+                </div>
+            </div>
+        </div>
+        <div class="flash-overlay"></div>
+    </div>
+
+    <!-- 3D Canvas Container -->
+    <div id="three-container"></div>
+
+    <!-- Main Content Overlays -->
+    <main id="main-content" class="main-content hidden">
+        <!-- Fixed Navigation -->
+        <nav class="navbar-3d">
+            <!-- LEFT: Mobile Menu Button (only visible on mobile) -->
+            <button class="nav-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- LEFT (Desktop): Menu Links -->
+            <ul class="nav-links">
+                <li><a href="#about" data-section="about" data-i18n="nav_about">Giới thiệu</a></li>
+                <li><a href="#gallery" data-section="gallery" data-i18n="nav_gallery">Bộ sưu tập</a></li>
+                <li><a href="#shop" data-section="shop" data-i18n="nav_shop">Cửa hàng</a></li>
+                <li><a href="#contact" data-section="contact" data-i18n="nav_contact">Liên hệ</a></li>
+            </ul>
+
+            <!-- CENTER: Logo (appears on scroll) -->
+            <a href="#hero-section" class="nav-logo-center">
+                <img src="assets/images/logo-full.png" alt="WHEELUP GANGZ">
+            </a>
+
+            <!-- RIGHT: Language Toggle -->
+            <div class="nav-actions">
+                <button class="lang-toggle" data-lang="vi" aria-label="Toggle language">
+                    <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" />
+                        <ellipse cx="12" cy="12" rx="4" ry="10" />
+                        <path d="M2 12h20" />
+                        <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10" />
+                        <path d="M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10" />
+                    </svg>
+                    <span class="lang-toggle-text">VI</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section Overlay -->
+        <section id="hero-section" class="section-3d hero-section-3d">
+            <div class="hero-content-3d">
+                <!-- Elegant Logo -->
+                <div class="hero-logo-container">
+                    <img src="assets/images/logo-full.png" alt="WHEELUP GANGZ" class="hero-logo">
+                </div>
+
+                <!-- Refined Slogan -->
+                <p class="hero-slogan" data-i18n="hero_slogan">CHẤT ĐẠP PHỐ</p>
+
+                <!-- Subtle Tagline -->
+                <p class="hero-tagline" data-i18n="hero_tagline">Chúng tôi không chỉ đạp xe — chúng tôi sống với văn hóa
+                </p>
+
+                <!-- Minimal CTA -->
+                <div class="hero-cta-3d">
+                    <a href="#about" class="btn-3d btn-outline-3d">
+                        <span data-i18n="hero_cta">Khám phá</span>
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator-3d">
+                <span data-i18n="hero_scroll">Cuộn</span>
+                <div class="scroll-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section Overlay -->
+        <section id="about" class="section-3d about-section-3d">
+            <div class="section-content glass-panel">
+                <div class="section-header-3d">
+                    <h2 class="section-title-3d" data-i18n="about_title">CHÚNG TÔI LÀ AI</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="about-content-3d">
+                    <p data-i18n="about_p1"><span class="highlight">WHEELUP GANGZ</span> không chỉ là thương hiệu. Chúng
+                        tôi là một phong trào.</p>
+                    <p data-i18n="about_p2">Sinh ra từ đường phố, xây dựng cho những ai sống và thở văn hóa xe đạp.</p>
+                    <p data-i18n="about_p3">Mỗi chuyến đi kể một câu chuyện. Mỗi bánh xe mang một di sản.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section Overlay -->
+        <section id="gallery" class="section-3d gallery-section-3d">
+            <div class="section-content">
+                <div class="section-header-3d">
+                    <h2 class="section-title-3d" data-i18n="gallery_title">BỘ SƯU TẬP</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="gallery-3d-hint">
+                    <p class="gallery-subtitle">@wheelup.gangz</p>
+                </div>
+
+                <div class="instagram-gallery">
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2024-10-31_03-12-58_UTC_1.jpg" alt="Wheelup Gangz bikes">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-06-29_15-44-35_UTC_1.jpg" alt="Wheelup Gangz crew">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-05-06_09-22-39_UTC_1.jpg" alt="Wheelup jewelry">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2024-10-31_03-12-58_UTC_2.jpg" alt="Wheelup Gangz">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-06-29_15-44-35_UTC_2.jpg" alt="Wheelup Gangz night">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-05-06_09-22-39_UTC_2.jpg" alt="Wheelup ring">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-01-12_16-05-04_UTC.jpg" alt="Night ride">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-06-29_15-44-35_UTC_3.jpg" alt="Crew hangout">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2024-08-24_09-21-02_UTC.jpg" alt="Wheelup Gangz">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-05-06_09-22-39_UTC_3.jpg" alt="Chain jewelry">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2024-04-08_17-00-54_UTC.jpg" alt="Wheelup Gangz">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/2025-02-16_08-29-22_UTC.jpg" alt="Wheelup ring">
+                    </div>
+                </div>
+
+                <a href="https://www.instagram.com/wheelup.gangz/" target="_blank" class="instagram-link">
+                    <span data-i18n="gallery_cta">Theo dõi trên Instagram</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="section-3d shop-section-3d">
+            <div class="section-content">
+                <div class="section-header-3d">
+                    <h2 class="section-title-3d" data-i18n="shop_title">MUA SẮM VĂN HÓA</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="shop-categories">
+                    <button class="category-tab active" data-category="apparel">
+                        <span class="tab-icon">🧥</span>
+                        <span class="tab-text" data-i18n="shop_tab_apparel">QUẦN ÁO</span>
+                    </button>
+                    <button class="category-tab" data-category="jewelry">
+                        <span class="tab-icon">💎</span>
+                        <span class="tab-text" data-i18n="shop_tab_jewelry">TRANG SỨC</span>
+                    </button>
+                    <button class="category-tab" data-category="bikes">
+                        <span class="tab-icon">🚲</span>
+                        <span class="tab-text" data-i18n="shop_tab_bikes">XE ĐẠP</span>
+                    </button>
+                </div>
+
+                <!-- Product Grids -->
+                <div class="product-grids">
+                    <!-- Apparel Grid -->
+                    <div class="product-grid active" data-category="apparel">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/apparel/hoodie.png" alt="Signature Hoodie">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_hoodie">Hoodie Đặc Trưng</h3>
+                                <p data-i18n="product_hoodie_desc">Logo chrome, in hình BMX rider</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/apparel/tee.png" alt="Urban Tee">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_tee">Áo Urban</h3>
+                                <p data-i18n="product_tee_desc">Dáng rộng, in kim loại</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/apparel/joggers.png" alt="Rider Joggers">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_joggers">Quần Rider</h3>
+                                <p data-i18n="product_joggers_desc">Vải tech, sọc phản quang</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jewelry Grid -->
+                    <div class="product-grid" data-category="jewelry">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/jewelry/chain.png" alt="Gear Chain">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_chain">Dây Chuyền Bánh Răng</h3>
+                                <p data-i18n="product_chain_desc">Mắt xích Cuban chrome, mặt bánh răng</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/jewelry/rings.png" alt="Wheel Rings">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_rings">Nhẫn Bánh Xe</h3>
+                                <p data-i18n="product_rings_desc">Bộ bạc, họa tiết nan hoa</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/jewelry/bracelet.png" alt="Chain Bracelet">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_bracelet">Vòng Tay Xích</h3>
+                                <p data-i18n="product_bracelet_desc">Thiết kế mắt xích xe đạp</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bikes Grid -->
+                    <div class="product-grid" data-category="bikes">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/bikes/bmx.png" alt="Street BMX">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_bmx">Street BMX</h3>
+                                <p data-i18n="product_bmx_desc">Đen mờ, peg freestyle</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/bikes/fixie.png" alt="Urban Fixie">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_fixie">Urban Fixie</h3>
+                                <p data-i18n="product_fixie_desc">Một số, vành sâu</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="assets/images/products/bikes/cruiser.png" alt="Classic Cruiser">
+                            </div>
+                            <div class="product-info">
+                                <h3 data-i18n="product_cruiser">Classic Cruiser</h3>
+                                <p data-i18n="product_cruiser_desc">Chắn bùn chrome, lốp bóng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section Overlay -->
+        <section id="contact" class="section-3d contact-section-3d">
+            <div class="section-content glass-panel">
+                <div class="section-header-3d">
+                    <h2 class="section-title-3d" data-i18n="contact_title">GIA NHẬP GANG</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="contact-content-3d">
+                    <div class="social-links-3d">
+                        <a href="#" class="social-link-3d">Instagram</a>
+                        <a href="#" class="social-link-3d">Facebook</a>
+                        <a href="#" class="social-link-3d">TikTok</a>
+                    </div>
+                    <p class="footer-text" data-i18n="footer_copyright">© 2026 WHEELUP GANGZ. Đã đăng ký bản quyền.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- WebGL Fallback -->
+    <div id="webgl-fallback" class="webgl-fallback hidden">
+        <div class="fallback-content">
+            <img src="assets/images/logo-full.png" alt="WHEELUP GANGZ">
+            <h1>WHEELUP GANGZ</h1>
+            <p>Your browser doesn't support 3D graphics. Please use a modern browser.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/particles-v3.js"></script>
+    <script src="js/loading-v3.js"></script>
+    <script type="module" src="js/three-main.js"></script>
+    <script src="js/scroll-animations.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/i18n.js"></script>
+</body>
+
+</html>
