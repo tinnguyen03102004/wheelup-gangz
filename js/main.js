@@ -5,10 +5,10 @@
 
 class WheelupGangz {
     constructor() {
-        this.navbar = document.querySelector('.navbar');
+        this.navbar = document.querySelector('.navbar-3d');
         this.menuBtn = document.querySelector('.nav-menu-btn');
         this.navLinks = document.querySelector('.nav-links');
-        this.sections = document.querySelectorAll('.section');
+        this.sections = document.querySelectorAll('.section-3d');
         this.galleryItems = document.querySelectorAll('.gallery-item');
 
         this.lastScrollY = 0;
@@ -132,100 +132,6 @@ class WheelupGangz {
         });
     }
 }
-
-// Add additional CSS for JS-controlled states
-const additionalStyles = document.createElement('style');
-additionalStyles.textContent = `
-    /* Navbar states */
-    .navbar {
-        transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    
-    .navbar.scrolled {
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(10px);
-    }
-    
-    .navbar.hidden {
-        transform: translateY(-100%);
-    }
-    
-    /* Mobile menu */
-    @media (max-width: 768px) {
-        .nav-links {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--color-black);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        
-        .nav-links.mobile-open {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .nav-links a {
-            font-size: 2rem;
-        }
-        
-        .nav-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .nav-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .nav-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-    }
-    
-    /* Scroll animations */
-    .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    
-    .animate-on-scroll.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Gallery dim effect */
-    .gallery-item {
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    
-    .gallery-item.dimmed {
-        opacity: 0.4;
-    }
-    
-    .gallery-item:hover {
-        transform: scale(1.02);
-    }
-    
-    /* Body states */
-    body.menu-open {
-        overflow: hidden;
-    }
-    
-    body.loaded .hero-content {
-        animation: fadeInUp 1s ease forwards;
-    }
-`;
-document.head.appendChild(additionalStyles);
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
