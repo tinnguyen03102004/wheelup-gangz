@@ -31,50 +31,93 @@
 
     /* Navbar Mobile */
     .navbar-3d {
-        padding: 0.75rem 1.5rem;
+        padding: 0 1.5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 70px;
+        height: 70px;
+        /* Cố định chiều cao để dễ căn giữa */
+    }
+
+    .nav-menu-btn {
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 100;
+        margin: 0;
     }
 
     .nav-logo-center {
-        position: relative;
-        left: 0;
-        transform: none;
         display: flex;
         justify-content: center;
-        flex: 1;
+        align-items: center;
+        flex-grow: 1;
     }
 
     .nav-logo-center img {
-        height: 38px;
+        height: 42px;
+        /* Tăng kích thước logo */
         width: auto;
-        object-fit: contain;
-    }
-
-    .navbar-3d .nav-links {
-        display: none;
-    }
-
-    .navbar-3d .nav-menu-btn {
-        display: flex;
-        margin-right: 0;
-        z-index: 100;
+        display: block;
     }
 
     .navbar-3d .nav-actions {
+        width: 40px;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
         z-index: 100;
     }
 
     .lang-toggle {
-        padding: 6px 10px !important;
-        font-size: 0.75rem !important;
+        padding: 5px 8px !important;
+        min-width: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    /* Hero Section Mobile Fix */
+    /* Shop Mobile Sliding Pill */
+    .shop-section-3d {
+        padding: 4rem 1rem;
+    }
+
+    .shop-toggle-container {
+        margin: 1.5rem 0 2.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .shop-toggle {
+        width: 100%;
+        max-width: 450px;
+        height: 44px;
+        /* Cố định chiều cao toggle */
+    }
+
+    .toggle-option {
+        min-width: unset;
+        flex: 1;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .toggle-icon {
+        width: 16px !important;
+        /* Cố định kích thước icon không cho nhỏ lại */
+        height: 16px !important;
+        flex-shrink: 0;
+        display: block;
+    }
+
+    .toggle-text {
+        font-size: 0.6rem;
+        white-space: nowrap;
+    }
+
     .hero-section-3d {
         display: flex;
         flex-direction: column;
