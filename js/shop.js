@@ -1,47 +1,43 @@
-/**
- * WHEELUP GANGZ - Shop Section
- * Toggle slider category switching functionality
- */
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Toggle option switching
     const shopToggle = document.querySelector('.shop-toggle');
     const toggleOptions = document.querySelectorAll('.toggle-option');
     const productGrids = document.querySelectorAll('.product-grid');
+    const gridsContainer = document.querySelector('.product-grids');
 
     if (!shopToggle || toggleOptions.length === 0) return;
 
-    // Set initial state
+    let currentIndex = 0;
     shopToggle.setAttribute('data-active', '0');
 
     toggleOptions.forEach((option, index) => {
         option.addEventListener('click', function () {
-            const category = this.dataset.category;
+            if (index === currentIndex) return;
 
-            // Update active option
+            const direction = index > currentIndex ? 'next' : 'prev';
+            const category = this.dataset.category;
+            const prevIndex = currentIndex;
+            currentIndex = index;
+
+            // 1. Update toggle UI
             toggleOptions.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
-
-            // Move slider
             shopToggle.setAttribute('data-active', index.toString());
 
-            // Show corresponding grid - CSS handles smooth transition
-            productGrids.forEach(grid => {
+            // 2. Handle Grid Transitions
+            productGrids.forEach((grid, gIndex) => {
+                // Remove all transit classes
+                grid.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+
                 if (grid.dataset.category === category) {
-                    grid.classList.add('active');
-                } else {
-                    grid.classList.remove('active');
+                    // This is the new grid coming in
+                    const slideInClass = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
+                    grid.classList.add('active', slideInClass);
+                } else if (gIndex === prevIndex) {
+                    // This is the old grid going out
+                    const slideOutClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
+                    grid.classList.add(slideOutClass);
                 }
             });
-        });
-    });
-
-    // Product card hover effects (already in CSS)
-    const productCards = document.querySelectorAll('.product-card');
-
-    productCards.forEach(card => {
-        card.addEventListener('mouseenter', function () {
-            // Add subtle scale animation that's already in CSS
         });
     });
 });
