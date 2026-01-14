@@ -82,7 +82,7 @@ class LoadingControllerV3 {
             const animate = (currentTime) => {
                 const elapsed = currentTime - startTime;
                 const rawProgress = Math.min(elapsed / duration, 1);
-                const easedProgress = this.easeOutCubic(rawProgress);
+                const easedProgress = this.easeInOutQuart(rawProgress);
 
                 const currentProgress = startProgress + (progressDiff * easedProgress);
 
@@ -102,6 +102,11 @@ class LoadingControllerV3 {
 
             requestAnimationFrame(animate);
         });
+    }
+
+    // Smooth easing function - easeInOutQuart for ultra-smooth animation
+    easeInOutQuart(t) {
+        return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
     }
 
     easeOutCubic(t) {

@@ -607,8 +607,8 @@
     height: 20px;
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
     filter: blur(8px);
-    transition: width 0.1s linear;
     pointer-events: none;
+    will-change: width;
 }
 
 .progress-bar-v3 {
@@ -630,7 +630,7 @@
     background-size: 300% 100%;
     animation: progressShimmer 2s linear infinite;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
-    transition: width 0.1s linear;
+    will-change: width;
 }
 
 @keyframes progressShimmer {
@@ -673,7 +673,7 @@
     left: 0%;
     right: auto;
     opacity: 1;
-    transition: left 0.1s linear;
+    will-change: left;
     animation: glowPulse 1s ease-in-out infinite;
 }
 
