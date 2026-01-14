@@ -122,14 +122,14 @@ const translations = {
 // =============================================
 
 const STORAGE_KEY = 'wheelup_lang';
-let currentLang = 'vi'; // Default Vietnamese
+let currentLang = 'en'; // Default English
 
 /**
  * Get saved language from localStorage or return default
  */
 function getSavedLanguage() {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved === 'en' ? 'en' : 'vi';
+    return saved === 'vi' ? 'vi' : 'en';
 }
 
 /**

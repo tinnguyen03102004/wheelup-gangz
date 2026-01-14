@@ -670,8 +670,11 @@
 }
 
 .progress-edge.right {
-    right: -3px;
-    opacity: 0;
+    left: 0%;
+    right: auto;
+    opacity: 1;
+    transition: left 0.1s linear;
+    animation: glowPulse 1s ease-in-out infinite;
 }
 
 @keyframes edgeFadeIn {

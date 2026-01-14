@@ -1,6 +1,7 @@
 /**
  * WHEELUP GANGZ - Smooth Scroll Enhancement
- * Buttery smooth scrolling experience using Lenis
+ * Buttery smooth scrolling experience for DESKTOP ONLY
+ * Mobile uses native scroll for better touch responsiveness
  */
 
 (function () {
@@ -14,12 +15,48 @@
         return;
     }
 
-    // Lenis smooth scroll implementation (lightweight custom version)
+    // Detect mobile/touch devices
+    const isMobile = () => {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+            window.innerWidth < 768 ||
+            ('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0);
+    };
+
+    // Skip smooth scroll on mobile - use native scroll
+    if (isMobile()) {
+        console.log('📱 Mobile detected - using native scroll for better touch response');
+
+        // Still enable smooth anchor scrolling on mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.navbar-3d')?.offsetHeight || 80;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        return; // Exit - don't initialize custom smooth scroll
+    }
+
+    // Desktop-only smooth scroll implementation
     class SmoothScroll {
         constructor(options = {}) {
             this.targetScrollY = window.scrollY;
             this.currentScrollY = window.scrollY;
-            this.ease = options.ease || 0.08; // Lower = smoother, higher = snappier
+            this.ease = options.ease || 0.08;
             this.isScrolling = false;
             this.animationFrame = null;
 
@@ -27,42 +64,24 @@
         }
 
         init() {
-            // Virtual scroll container
             document.body.style.height = '';
 
-            // Listen for wheel events
+            // Only wheel events for desktop
             window.addEventListener('wheel', this.onWheel.bind(this), { passive: false });
 
-            // Listen for touch events (mobile)
-            let touchStartY = 0;
-            window.addEventListener('touchstart', (e) => {
-                touchStartY = e.touches[0].clientY;
-            }, { passive: true });
-
-            window.addEventListener('touchmove', (e) => {
-                const touchY = e.touches[0].clientY;
-                const deltaY = touchStartY - touchY;
-                this.targetScrollY += deltaY * 0.5;
-                this.targetScrollY = Math.max(0, Math.min(this.targetScrollY, this.getMaxScroll()));
-                touchStartY = touchY;
-                this.startAnimation();
-            }, { passive: true });
-
-            // Listen for keyboard navigation
+            // Keyboard navigation
             window.addEventListener('keydown', this.onKeydown.bind(this));
 
-            // Start animation loop
             this.startAnimation();
         }
 
         onWheel(e) {
             e.preventDefault();
 
-            // Calculate target scroll position
             const delta = e.deltaY;
-            const multiplier = e.deltaMode === 1 ? 20 : 1; // Handle line vs pixel scroll
+            const multiplier = e.deltaMode === 1 ? 20 : 1;
 
-            this.targetScrollY += delta * multiplier * 0.6; // Reduce scroll speed slightly
+            this.targetScrollY += delta * multiplier * 0.6;
             this.targetScrollY = Math.max(0, Math.min(this.targetScrollY, this.getMaxScroll()));
 
             this.startAnimation();
@@ -99,16 +118,12 @@
         }
 
         animate() {
-            // Lerp to target
             const diff = this.targetScrollY - this.currentScrollY;
 
-            // Apply easing
             this.currentScrollY += diff * this.ease;
 
-            // Apply scroll
             window.scrollTo(0, this.currentScrollY);
 
-            // Continue animation if not close enough to target
             if (Math.abs(diff) > 0.5) {
                 this.animationFrame = requestAnimationFrame(this.animate.bind(this));
             } else {
@@ -118,7 +133,6 @@
             }
         }
 
-        // Public method to scroll to element
         scrollTo(target, offset = 0) {
             let targetPosition = 0;
 
@@ -145,14 +159,12 @@
         }
     }
 
-    // Wait for page load
+    // Initialize for desktop only
     function init() {
-        // Initialize smooth scroll
         const smoothScroll = new SmoothScroll({
-            ease: 0.075 // Slightly lower for smoother feel
+            ease: 0.075
         });
 
-        // Expose to global scope for navigation links
         window.smoothScroll = smoothScroll;
 
         // Override anchor link behavior
@@ -169,7 +181,7 @@
             });
         });
 
-        console.log('🧈 Smooth scroll initialized');
+        console.log('🧈 Smooth scroll initialized (Desktop only)');
     }
 
     // Initialize after DOM and loading screen
@@ -180,3 +192,4 @@
     }
 
 })();
+

@@ -150,7 +150,7 @@
 
             <!-- RIGHT: Language Toggle -->
             <div class="nav-actions">
-                <button class="lang-toggle" data-lang="vi" aria-label="Toggle language">
+                <button class="lang-toggle" data-lang="en" aria-label="Toggle language">
                     <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <circle cx="12" cy="12" r="10" />
                         <ellipse cx="12" cy="12" rx="4" ry="10" />
@@ -158,7 +158,7 @@
                         <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10" />
                         <path d="M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10" />
                     </svg>
-                    <span class="lang-toggle-text">VI</span>
+                    <span class="lang-toggle-text">EN</span>
                 </button>
             </div>
         </nav>
@@ -279,20 +279,23 @@
                     <div class="title-underline"></div>
                 </div>
 
-                <!-- Category Tabs -->
-                <div class="shop-categories">
-                    <button class="category-tab active" data-category="apparel">
-                        <span class="tab-icon">🧥</span>
-                        <span class="tab-text" data-i18n="shop_tab_apparel">QUẦN ÁO</span>
-                    </button>
-                    <button class="category-tab" data-category="jewelry">
-                        <span class="tab-icon">💎</span>
-                        <span class="tab-text" data-i18n="shop_tab_jewelry">TRANG SỨC</span>
-                    </button>
-                    <button class="category-tab" data-category="bikes">
-                        <span class="tab-icon">🚲</span>
-                        <span class="tab-text" data-i18n="shop_tab_bikes">XE ĐẠP</span>
-                    </button>
+                <!-- Category Toggle -->
+                <div class="shop-toggle-container">
+                    <div class="shop-toggle">
+                        <div class="toggle-slider"></div>
+                        <button class="toggle-option active" data-category="apparel">
+                            <span class="toggle-icon">🧥</span>
+                            <span class="toggle-text" data-i18n="shop_tab_apparel">APPAREL</span>
+                        </button>
+                        <button class="toggle-option" data-category="jewelry">
+                            <span class="toggle-icon">💎</span>
+                            <span class="toggle-text" data-i18n="shop_tab_jewelry">JEWELRY</span>
+                        </button>
+                        <button class="toggle-option" data-category="bikes">
+                            <span class="toggle-icon">🚲</span>
+                            <span class="toggle-text" data-i18n="shop_tab_bikes">BIKES</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Product Grids -->

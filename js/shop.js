@@ -1,32 +1,44 @@
 /**
  * WHEELUP GANGZ - Shop Section
- * Category tab switching functionality
+ * Toggle slider category switching functionality
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Category Tab Switching
-    const categoryTabs = document.querySelectorAll('.category-tab');
+    // Toggle option switching
+    const shopToggle = document.querySelector('.shop-toggle');
+    const toggleOptions = document.querySelectorAll('.toggle-option');
     const productGrids = document.querySelectorAll('.product-grid');
 
-    categoryTabs.forEach(tab => {
-        tab.addEventListener('click', function () {
+    if (!shopToggle || toggleOptions.length === 0) return;
+
+    // Set initial state
+    shopToggle.setAttribute('data-active', '0');
+
+    toggleOptions.forEach((option, index) => {
+        option.addEventListener('click', function () {
             const category = this.dataset.category;
 
-            // Update active tab
-            categoryTabs.forEach(t => t.classList.remove('active'));
+            // Update active option
+            toggleOptions.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
 
-            // Show corresponding grid
+            // Move slider
+            shopToggle.setAttribute('data-active', index.toString());
+
+            // Show corresponding grid with animation
             productGrids.forEach(grid => {
                 grid.classList.remove('active');
                 if (grid.dataset.category === category) {
-                    grid.classList.add('active');
+                    // Small delay for animation
+                    setTimeout(() => {
+                        grid.classList.add('active');
+                    }, 150);
                 }
             });
         });
     });
 
-    // Product card hover sound (optional enhancement)
+    // Product card hover effects (already in CSS)
     const productCards = document.querySelectorAll('.product-card');
 
     productCards.forEach(card => {

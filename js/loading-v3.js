@@ -9,6 +9,7 @@ class LoadingControllerV3 {
         this.mainContent = document.getElementById('main-content');
         this.progressFill = document.querySelector('.progress-fill-v3');
         this.progressGlow = document.querySelector('.progress-glow-v3');
+        this.progressEdge = document.querySelector('.progress-edge.right');
         this.stageText = document.querySelector('.stage-text');
         this.progressPercent = document.querySelector('.progress-percent-v3');
         this.flashOverlay = document.querySelector('.flash-overlay');
@@ -87,6 +88,9 @@ class LoadingControllerV3 {
 
                 this.progressFill.style.width = `${currentProgress}%`;
                 this.progressGlow.style.width = `${currentProgress}%`;
+                if (this.progressEdge) {
+                    this.progressEdge.style.left = `calc(${currentProgress}% - 3px)`;
+                }
                 this.progressPercent.textContent = `${Math.floor(currentProgress)}%`;
 
                 if (rawProgress < 1) {
