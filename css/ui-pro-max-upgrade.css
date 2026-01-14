@@ -576,7 +576,14 @@
 }
 
 .toggle-icon {
-    font-size: 1rem;
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.toggle-option:hover .toggle-icon {
+    transform: scale(1.1);
 }
 
 .toggle-text {
@@ -596,20 +603,31 @@
     transform: translateX(200%);
 }
 
-/* Product Grids */
+/* Product Grids with Smooth Transition */
 .product-grids {
     position: relative;
+    min-height: 400px;
 }
 
 .product-grid {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    animation: pm-fadeInUp 0.5s ease-out;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
 }
 
 .product-grid.active {
-    display: grid;
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 /* Product Card */

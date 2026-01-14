@@ -25,14 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // Move slider
             shopToggle.setAttribute('data-active', index.toString());
 
-            // Show corresponding grid with animation
+            // Show corresponding grid - CSS handles smooth transition
             productGrids.forEach(grid => {
-                grid.classList.remove('active');
                 if (grid.dataset.category === category) {
-                    // Small delay for animation
-                    setTimeout(() => {
-                        grid.classList.add('active');
-                    }, 150);
+                    grid.classList.add('active');
+                } else {
+                    grid.classList.remove('active');
                 }
             });
         });
